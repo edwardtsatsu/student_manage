@@ -1,0 +1,2 @@
+# SCHEMA
+![STUDENT MANAGEMENT SYSTEM SCHEMA](db_schema.png)
