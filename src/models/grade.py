@@ -1,8 +1,9 @@
 import uuid
-from sqlalchemy import UUID, Numeric, String, func, Column, ForeignKey, DateTime, Text, Double
-from sqlalchemy.orm import relationship
+
+from sqlalchemy import UUID, Numeric, String, func, Column, DateTime
 
 from src.models.base import Base
+
 
 class Grade(Base):
     __tablename__ = 'grades'

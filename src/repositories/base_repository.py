@@ -34,7 +34,7 @@ class BaseRepository:
 
     def delete(self, id):
         db_session.execute(update(self.model)
-                           .where(self.model.deleted_at.is_(None))
+                           # .where(self.model.deleted_at.is_(None))
                            .where(self.model.id == id)
                            .values(deleted_at=datetime.now()))
         db_session.commit()
