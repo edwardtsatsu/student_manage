@@ -1,8 +1,9 @@
 import uuid
-from sqlalchemy import UUID, Numeric, String, func, Column, ForeignKey, DateTime, Text, Double
-from sqlalchemy.orm import relationship
+
+from sqlalchemy import UUID, Numeric, func, Column, ForeignKey, DateTime
 
 from src.models.base import Base
+
 
 class ExamScore(Base):
     __tablename__ = 'exam_scores'

@@ -17,7 +17,7 @@ def login(service: AuthService):
 
 
 @auth_bp.post('/student/login')
-def studen_login(service: AuthService):
+def student_login(service: AuthService):
     data = StudentLoginRequest(**request.get_json())
     response = service.student_login(data)
     if response is None:
