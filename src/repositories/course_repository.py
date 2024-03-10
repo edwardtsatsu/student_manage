@@ -13,3 +13,8 @@ class CourseRepository(BaseRepository):
         return db_session.scalars(select(self.model)
                                   .where(self.model.deleted_at.is_(None))
                                   .where(self.model.code == code)).first()
+
+    def find_by_id_in(self, ids):
+        return db_session.scalars(select(self.model)
+                                  .where(self.model.deleted_at.is_(None))
+                                  .where(self.model.id.in_(ids))).all()

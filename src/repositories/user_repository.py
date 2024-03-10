@@ -33,3 +33,11 @@ class UserRepository(BaseRepository):
                                   .where(Student.deleted_at == None)
                                   .where(Student.is_active.is_(True))
                                   .where(Student.student_code == student_code)).first()
+
+    def find_student_by_id(self, id):
+        return db_session.scalars(select(self.model)
+                                  .options(joinedload(self.model.student))
+                                  .where(self.model.deleted_at.is_(None))
+                                  .where(Student.deleted_at == None)
+                                  .where(Student.is_active.is_(True))
+                                  .where(Student.id == id)).first()

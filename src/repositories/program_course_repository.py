@@ -27,6 +27,15 @@ class ProgramCourseRepository(BaseRepository):
                                   .where(self.model.semester_id == semester_id)
                                   .order_by(desc(self.model.id))).all()
 
+    def find_by_program_id_and_semester_id_and_course_id_in(self, program_id, semester_id, course_ids):
+        return db_session.scalars(select(self.model)
+                                  .options(joinedload(self.model.program), joinedload(self.model.course))
+                                  .where(self.model.deleted_at.is_(None))
+                                  .where(self.model.program_id == program_id)
+                                  .where(self.model.semester_id == semester_id)
+                                  .where(self.model.course_id.in_(course_ids))
+                                  .order_by(desc(self.model.id))).all()
+
     def __parse_query(self, db_query, query=None):
         if query is None:
             return db_session.scalars(db_query).unique().all()
