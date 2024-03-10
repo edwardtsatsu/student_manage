@@ -1,5 +1,5 @@
 from flask.cli import AppGroup
-from seeders import run_seed
+from src.seeders import run_seed
 
 seed_cli = AppGroup('seed')
 

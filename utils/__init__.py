@@ -1,12 +1,12 @@
-from time import time
+import uuid
 
 
 def generate_password():
     return 'password'
 
 
-def generate_order_number():
-    return time()
+def generate_student_code():
+    return str(uuid.uuid4())
 
 
 def get_offset(page=None, limit=20):

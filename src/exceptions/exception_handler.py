@@ -11,6 +11,10 @@ def resource_not_found_handler(e):
     return jsonify({'message': e.description}), 404
 
 
+def server_error_handler(e):
+    return jsonify({'message': e.description}), 500
+
+
 def access_denied_handler(e):
     return jsonify({'message': e.description}), 403
 

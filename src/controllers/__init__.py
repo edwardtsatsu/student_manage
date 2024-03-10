@@ -1,17 +1,15 @@
 from src.controllers.auth_controller import auth_bp
-from src.controllers.menu_category_controller import menu_category_bp
-from src.controllers.menu_controller import menu_bp
-from src.controllers.order_controller import order_bp
-from src.controllers.order_status_controller import order_status_bp
-from src.controllers.restaurant_controller import restaurant_bp
-from src.controllers.restaurant_registration_controller import restaurant_registration_bp
+from src.controllers.course_controller import course_bp
+from src.controllers.program_controller import program_bp
+from src.controllers.program_course_controller import program_course_bp
+from src.controllers.semester_controller import semester_bp
+from src.controllers.student_controller import student_bp
 
 
 def register_routes(app, version):
     app.register_blueprint(auth_bp, url_prefix=f'/api/{version}/auth')
-    app.register_blueprint(restaurant_registration_bp, url_prefix=f'/api/{version}/restaurant_registrations')
-    app.register_blueprint(restaurant_bp, url_prefix=f'/api/{version}/restaurants')
-    app.register_blueprint(menu_category_bp, url_prefix=f'/api/{version}/menu_categories')
-    app.register_blueprint(menu_bp, url_prefix=f'/api/{version}/menus')
-    app.register_blueprint(order_bp, url_prefix=f'/api/{version}/orders')
-    app.register_blueprint(order_status_bp, url_prefix=f'/api/{version}/order_statuses')
+    app.register_blueprint(semester_bp, url_prefix=f'/api/{version}/semesters')
+    app.register_blueprint(program_bp, url_prefix=f'/api/{version}/programs')
+    app.register_blueprint(course_bp, url_prefix=f'/api/{version}/courses')
+    app.register_blueprint(student_bp, url_prefix=f'/api/{version}/students')
+    app.register_blueprint(program_course_bp, url_prefix=f'/api/{version}/program_courses')

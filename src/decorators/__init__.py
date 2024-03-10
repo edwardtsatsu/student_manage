@@ -12,33 +12,32 @@ def is_super_admin(func):
         token = get_token()
 
         if token is None:
-            return jsonify({'message': 'access denied'}), 403
+            return jsonify({'message': 'unauthorized'}), 401
 
         payload = decode_token(token)
 
         user_repo = UserRepository()
         user = user_repo.find(payload.get('sub'))
-        print(user)
-        if user.role.name != 'Super Admin':
+        if user is None or user.role.name != 'Super Admin':
             return jsonify({'message': 'access denied'}), 403
         return func(*args, **kwargs)
 
     return decorated_function
 
 
-def is_restaurant_admin(func):
+def is_student(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):
         token = get_token()
 
         if token is None:
-            return jsonify({'message': 'access denied'}), 403
+            return jsonify({'message': 'unauthorized'}), 401
 
         payload = decode_token(token)
 
         user_repo = UserRepository()
         user = user_repo.find(payload.get('sub'))
-        if user.role.name != 'Restaurant Admin':
+        if user is None or user.role.name != 'Student':
             return jsonify({'message': 'access denied'}), 403
         return func(*args, **kwargs)
 
