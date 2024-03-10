@@ -22,8 +22,6 @@ class StudentService(BaseService, ABC):
 
     def find_all(self, query=None):
         resources = self.repository.find_all(query)
-        for item in resources:
-            print(item.user)
         return list(map(lambda x: self.__build_dto(x, x.user), resources))
 
     def store(self, data):
@@ -59,7 +57,7 @@ class StudentService(BaseService, ABC):
 
             student_dto = self.__build_dto(student, user)
 
-            return student_dto.dict()
+            return student_dto
 
         except Exception as e:
             print(f'error saving student {e}')

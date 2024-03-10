@@ -30,7 +30,7 @@ def store(service: StudentService):
 @jwt_required()
 @is_super_admin
 def update(id, service: StudentService):
-    data = UpdateStudentRequest(**request.get_json()).dict()
+    data = UpdateStudentRequest(id=id, **request.get_json()).dict()
     resource = service.update(id, data)
     return jsonify(resource)
 
